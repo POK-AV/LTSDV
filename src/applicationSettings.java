@@ -26,14 +26,10 @@ public class applicationSettings {
 		int currentRow = 1;
 		
 		while(currentRow < lastRow) {
-			System.out.println("Current Row: " + currentRow + " | Contents: " + sheet.getRow(currentRow).getCell(0).getStringCellValue());
 			if(sheet.getRow(currentRow).getCell(0).getStringCellValue().equals(name)) {
-				System.out.println("Username Match! Username: " + name);
 				if(sheet.getRow(currentRow).getCell(1).getStringCellValue().equals(password)) {
-					System.out.println("Password Match! Password: " + password);
 					return true;
 				}else {
-					System.out.println("Wrong Password!");
 					return false;
 				}
 			}

@@ -77,6 +77,13 @@ public class loginScreen extends Application{
 		passwordFieldUnmasked.setId("textFields");
 		passwordFieldUnmasked.setVisible(false);
 		
+		//ERROR LABEL\\
+		Label errorLabel = new Label("Incorrect Username or Password");
+		errorLabel.relocate(298, 70);
+		errorLabel.setId("errorLabel");
+		errorLabel.setVisible(false);
+		
+		
 		
 		//LOGIN BUTTON\\
 		Button loginButton = new Button("LOGIN");
@@ -93,7 +100,9 @@ public class loginScreen extends Application{
 				}//END of Try/Catch
 				if(userFound) {
 					//TODO: Implement Login
+					errorLabel.setVisible(false);
 				}else {
+					errorLabel.setVisible(true);
 					//TODO: Show Error
 				}//End If Statement
 			}
@@ -110,7 +119,7 @@ public class loginScreen extends Application{
 		
 		//Add everything to Pane\\
 		borderPane.setCenter(centerPaneLayout);
-		centerPaneLayout.getChildren().addAll(usernameField, passwordField, passwordFieldUnmasked, loginButton, showPassword);
+		centerPaneLayout.getChildren().addAll(usernameField, passwordField, passwordFieldUnmasked, loginButton, showPassword, errorLabel);
 		
 		//STAGE STUFF\\
 		primaryStage.setScene(loginScreen);
