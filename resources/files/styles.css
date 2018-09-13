@@ -13,3 +13,24 @@
 #pokLogo{
 	-fx-background-insets: 0, 0, 0, 0;
 }
+
+#buttons{
+	-fx-background-color: #353637;
+	-fx-text-fill: #f49434;
+	-fx-font-family: "Montserrat";
+	-fx-border-color: #f49434;
+}
+
+#buttons:hover{
+	-fx-background-color: #353637;
+	-fx-text-fill: 
+		linear-gradient(from 0% 0% to 0% 100%, #f49434 50%, #f48433 50%);
+	-fx-font-family: "Montserrat";
+	-fx-border-width: 2;
+	-fx-border-color: 
+		linear-gradient(from 0% 0% to 0% 100%, #f49434 50%, #f48433 50%);;
+}
+
+#textFields{
+	-fx-font-family: "Montserrat";
+}

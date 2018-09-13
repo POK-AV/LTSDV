@@ -4,13 +4,19 @@ import javafx.application.Application;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.PasswordField;
+import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
 public class loginScreen extends Application{
+	
+	static int textFieldSize = 250;
 
 	Scene loginScreen;
 	public void start(Stage primaryStage) throws Exception {
@@ -36,6 +42,34 @@ public class loginScreen extends Application{
 		bottomHBox.getChildren().addAll(pokLogo);
 		BorderPane.setAlignment(bottomHBox, Pos.CENTER);
 		borderPane.setBottom(bottomHBox);
+		
+		//CENTER PANE LAYOUT\\
+		//I am using a pane for the absolute positioning
+		Pane centerPaneLayout = new Pane();
+		
+		//USERNAME FIELD\\
+		TextField usernameField = new TextField();
+		usernameField.setText("USERNAME");
+		usernameField.setMinWidth(textFieldSize);
+		usernameField.relocate(300, 100);
+		usernameField.setId("textFields");
+		
+		//PASSWORD FIELD\\
+		PasswordField passwordField = new PasswordField();
+		passwordField.setText("PASSWORD");
+		passwordField.setMinWidth(textFieldSize);
+		passwordField.relocate(300, 135);
+		passwordField.setId("textFields");
+		
+		
+		//LOGIN BUTTON\\
+		Button loginButton = new Button("LOGIN");
+		loginButton.relocate(488, 170);
+		loginButton.setId("buttons");
+		
+		//Add everything to Pane\\
+		borderPane.setCenter(centerPaneLayout);
+		centerPaneLayout.getChildren().addAll(usernameField, passwordField, loginButton);
 		
 		//STAGE STUFF\\
 		primaryStage.setScene(loginScreen);
