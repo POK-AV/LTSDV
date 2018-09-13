@@ -11,17 +11,7 @@ It should work in Windows/MacOS/Linux and other *nix systems
 
 ## Changelog
 
-6.27.18
-* Added applicationSettings
-* Added OS check to applicationSettings
-* Added setIcon to applicationSettings
-* Added .icns to Images Folder for Exporting
-* Program now sets icon image based on OS
-* Added a couple new JFrame’s for Lyrics
-* Added Back button on several JFrames
-* Added .dispose() instead of hiding the JFrame to free up resources
-
-6.27.18
+9.13.18
 ------------------------------------------------------------------------------------------------------------
 * Added “Show Password” checkbox on Login screen
 * Released a patch to fix needing to decompile the Jar to get it to run Properly
