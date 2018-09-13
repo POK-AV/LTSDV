@@ -18,7 +18,7 @@ public class applicationSettings {
 	}
 	
 	@SuppressWarnings("resource")
-	public static Boolean lookupUser(String name, String password) throws IOException {
+	public static String lookupUser(String name, String password) throws IOException {
 		InputStream inputStream = applicationSettings.class.getResourceAsStream("/files/users.xlsx");
 		XSSFWorkbook workbook = new XSSFWorkbook(inputStream);
 		XSSFSheet sheet = workbook.getSheetAt(0);
@@ -28,14 +28,18 @@ public class applicationSettings {
 		while(currentRow < lastRow) {
 			if(sheet.getRow(currentRow).getCell(0).getStringCellValue().equals(name)) {
 				if(sheet.getRow(currentRow).getCell(1).getStringCellValue().equals(password)) {
-					return true;
-				}else {
-					return false;
+					if(sheet.getRow(currentRow).getCell(2).getNumericCellValue() == 1) {
+						return "1";
+					}else if(sheet.getRow(currentRow).getCell(2).getNumericCellValue() == 2){
+						return "2";
+					}
+				}else if(sheet.getRow(currentRow).getCell(2).getNumericCellValue() == 3){
+					return "3";
 				}
 			}
 			currentRow++;
 		}
-		return false;
+		return "4";
 	}
 	
 }

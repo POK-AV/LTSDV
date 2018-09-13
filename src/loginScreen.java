@@ -92,16 +92,27 @@ public class loginScreen extends Application{
 		
 		EventHandler<ActionEvent> loginClicked = new EventHandler<ActionEvent>() {
 			public void handle(ActionEvent event) {
-				Boolean userFound = false;
+				String userFound =  null;
 				try {
 					userFound = applicationSettings.lookupUser(usernameField.getText(), passwordField.getText());
 				} catch (IOException e) {
 					e.printStackTrace();
 				}//END of Try/Catch
-				if(userFound) {
+				if(userFound.equals("1")) { //1 is Admin Access
 					//TODO: Implement Login
+					System.out.println("Admin Login");
 					errorLabel.setVisible(false);
-				}else {
+					
+				}else if(userFound.equals("2")){ //2 is Elevated Access
+					//TODO: Elevated Access
+					System.out.println("Elevated Login");
+					errorLabel.setVisible(false);
+					
+				}else if(userFound.equals("2")){ 
+					//TODO: Basic Access
+					System.out.println("Basic Login");
+					errorLabel.setVisible(false);
+				}else{//Show Error
 					errorLabel.setVisible(true);
 					//TODO: Show Error
 				}//End If Statement
