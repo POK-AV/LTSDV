@@ -1,6 +1,10 @@
 //Made by Trey Carey | 9.11.18
 
+import java.io.IOException;
+
 import javafx.application.Application;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
@@ -78,6 +82,25 @@ public class loginScreen extends Application{
 		Button loginButton = new Button("LOGIN");
 		loginButton.relocate(488, 170);
 		loginButton.setId("buttons");
+		
+		EventHandler<ActionEvent> loginClicked = new EventHandler<ActionEvent>() {
+			public void handle(ActionEvent event) {
+				Boolean userFound = false;
+				try {
+					userFound = applicationSettings.lookupUser();
+				} catch (IOException e) {
+					e.printStackTrace();
+				}//END of Try/Catch
+				if(userFound) {
+					//TODO: Implement Login
+				}else {
+					//TODO: Show Error
+				}//End If Statement
+			}
+			
+		};
+		
+		loginButton.setOnAction(loginClicked);
 		
 		//CHECKBOX\\
 		showPassword = new CheckBox("SHOW PASSWORD");
