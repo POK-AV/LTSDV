@@ -5,6 +5,7 @@ import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
@@ -17,6 +18,9 @@ import javafx.stage.Stage;
 public class loginScreen extends Application{
 	
 	static int textFieldSize = 250;
+	static PasswordField passwordField;
+	static TextField passwordFieldUnmasked;
+	static CheckBox showPassword;
 
 	Scene loginScreen;
 	public void start(Stage primaryStage) throws Exception {
@@ -55,11 +59,19 @@ public class loginScreen extends Application{
 		usernameField.setId("textFields");
 		
 		//PASSWORD FIELD\\
-		PasswordField passwordField = new PasswordField();
+		passwordField = new PasswordField();
 		passwordField.setText("PASSWORD");
 		passwordField.setMinWidth(textFieldSize);
 		passwordField.relocate(300, 135);
 		passwordField.setId("textFields");
+		
+		//PASSWORD FIELD\\
+		passwordFieldUnmasked = new TextField();
+		passwordFieldUnmasked.setText("PASSWORD");
+		passwordFieldUnmasked.setMinWidth(textFieldSize);
+		passwordFieldUnmasked.relocate(300, 135);
+		passwordFieldUnmasked.setId("textFields");
+		passwordFieldUnmasked.setVisible(false);
 		
 		
 		//LOGIN BUTTON\\
@@ -67,15 +79,34 @@ public class loginScreen extends Application{
 		loginButton.relocate(488, 170);
 		loginButton.setId("buttons");
 		
+		//CHECKBOX\\
+		showPassword = new CheckBox("SHOW PASSWORD");
+		showPassword.setId("checkboxes");
+		showPassword.relocate(300, 175);
+		showPassword.setOnAction(e -> showPassword());
+		
 		//Add everything to Pane\\
 		borderPane.setCenter(centerPaneLayout);
-		centerPaneLayout.getChildren().addAll(usernameField, passwordField, loginButton);
+		centerPaneLayout.getChildren().addAll(usernameField, passwordField, passwordFieldUnmasked, loginButton, showPassword);
 		
 		//STAGE STUFF\\
 		primaryStage.setScene(loginScreen);
 		primaryStage.setResizable(false);
 		primaryStage.setTitle(applicationSettings.getApplicationName());
 		primaryStage.show();
+	}
+	
+	public static void showPassword() {
+		if(showPassword.isSelected()) {
+			passwordFieldUnmasked.setText(passwordField.getText());
+			passwordFieldUnmasked.setVisible(true);
+			passwordField.setVisible(false);
+		}else {
+			passwordField.setText(passwordFieldUnmasked.getText());
+			passwordField.setVisible(true);
+			passwordFieldUnmasked.setVisible(false);
+		}
+		
 	}
 	
 	public static void main(String[] args) {
