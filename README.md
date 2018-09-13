@@ -7,11 +7,3 @@ It should work in Windows/MacOS/Linux and other *nix systems
 
 ## Known Issues
 * Propresenter 5 for Windows does not support UTF-8 correctly which makes international characters to be shown incorrectly, e.g. Swedish characters ÅÄÖ are shown as ???. This is fixed in propresenter 6.
-
-
-## Changelog
-
-9.13.18
-------------------------------------------------------------------------------------------------------------
-* Added “Show Password” checkbox on Login screen
-* Released a patch to fix needing to decompile the Jar to get it to run Properly
