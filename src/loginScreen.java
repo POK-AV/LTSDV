@@ -87,7 +87,7 @@ public class loginScreen extends Application{
 			public void handle(ActionEvent event) {
 				Boolean userFound = false;
 				try {
-					userFound = applicationSettings.lookupUser();
+					userFound = applicationSettings.lookupUser(usernameField.getText(), passwordField.getText());
 				} catch (IOException e) {
 					e.printStackTrace();
 				}//END of Try/Catch
