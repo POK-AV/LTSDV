@@ -18,28 +18,29 @@ public class applicationSettings {
 	}
 	
 	@SuppressWarnings("resource")
-	public static String lookupUser(String name, String password) throws IOException {
+	public static double lookupUser(String name, String password) throws IOException {
 		InputStream inputStream = applicationSettings.class.getResourceAsStream("/files/users.xlsx");
 		XSSFWorkbook workbook = new XSSFWorkbook(inputStream);
 		XSSFSheet sheet = workbook.getSheetAt(0);
 		Integer lastRow = sheet.getPhysicalNumberOfRows();
 		int currentRow = 1;
 		
+		/*
+		 * Currently this breaks for Alan Moreno, don't know why, need to fix
+		 */
+		
+		//TODO: Fix this breaking on Alan Moreno
 		while(currentRow < lastRow) {
-			if(sheet.getRow(currentRow).getCell(0).getStringCellValue().equals(name)) {
-				if(sheet.getRow(currentRow).getCell(1).getStringCellValue().equals(password)) {
-					if(sheet.getRow(currentRow).getCell(2).getNumericCellValue() == 1) {
-						return "1";
-					}else if(sheet.getRow(currentRow).getCell(2).getNumericCellValue() == 2){
-						return "2";
-					}
-				}else if(sheet.getRow(currentRow).getCell(2).getNumericCellValue() == 3){
-					return "3";
+			if(sheet.getRow(currentRow).getCell(0).getStringCellValue().toLowerCase().equals(name.toLowerCase())) {
+				if(sheet.getRow(currentRow).getCell(1).getStringCellValue().toLowerCase().equals(password.toLowerCase())) {
+					double accessLevel = sheet.getRow(currentRow).getCell(2).getNumericCellValue();
+					System.out.println(accessLevel);
+					return accessLevel;
 				}
 			}
 			currentRow++;
 		}
-		return "4";
+		return 4.0;
 	}
 	
 }

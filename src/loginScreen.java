@@ -1,7 +1,6 @@
 //Made by Trey Carey | 9.11.18
 
 import java.io.IOException;
-
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -92,23 +91,23 @@ public class loginScreen extends Application{
 		
 		EventHandler<ActionEvent> loginClicked = new EventHandler<ActionEvent>() {
 			public void handle(ActionEvent event) {
-				String userFound =  null;
+				double userFound =  0.0;
 				try {
 					userFound = applicationSettings.lookupUser(usernameField.getText(), passwordField.getText());
 				} catch (IOException e) {
 					e.printStackTrace();
 				}//END of Try/Catch
-				if(userFound.equals("1")) { //1 is Admin Access
+				if(userFound == 1.0) { //1 is Admin Access
 					//TODO: Implement Login
 					System.out.println("Admin Login");
 					errorLabel.setVisible(false);
 					
-				}else if(userFound.equals("2")){ //2 is Elevated Access
+				}else if(userFound == 2.0){ //2 is Elevated Access
 					//TODO: Elevated Access
 					System.out.println("Elevated Login");
 					errorLabel.setVisible(false);
 					
-				}else if(userFound.equals("2")){ 
+				}else if(userFound == 3.0){ 
 					//TODO: Basic Access
 					System.out.println("Basic Login");
 					errorLabel.setVisible(false);
@@ -127,6 +126,7 @@ public class loginScreen extends Application{
 		showPassword.setId("checkboxes");
 		showPassword.relocate(300, 175);
 		showPassword.setOnAction(e -> showPassword());
+		
 		
 		//Add everything to Pane\\
 		borderPane.setCenter(centerPaneLayout);
