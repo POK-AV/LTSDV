@@ -27,6 +27,7 @@ public class applicationSettings {
 		
 		/*
 		 * Currently this breaks for Alan Moreno, don't know why, need to fix
+		 * Update 9.14.18, Seems to work now? No changes made?
 		 */
 		
 		//TODO: Fix this breaking on Alan Moreno
@@ -34,7 +35,6 @@ public class applicationSettings {
 			if(sheet.getRow(currentRow).getCell(0).getStringCellValue().toLowerCase().equals(name.toLowerCase())) {
 				if(sheet.getRow(currentRow).getCell(1).getStringCellValue().toLowerCase().equals(password.toLowerCase())) {
 					double accessLevel = sheet.getRow(currentRow).getCell(2).getNumericCellValue();
-					System.out.println(accessLevel);
 					return accessLevel;
 				}
 			}

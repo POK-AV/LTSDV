@@ -97,23 +97,20 @@ public class loginScreen extends Application{
 				} catch (IOException e) {
 					e.printStackTrace();
 				}//END of Try/Catch
-				if(userFound == 1.0) { //1 is Admin Access
-					//TODO: Implement Login
-					System.out.println("Admin Login");
+				
+				/*
+				 * 1 = Admin
+				 * 2 = Elevated
+				 * 3 = Basic
+				 * 4 = No User
+				 */
+				
+				if(userFound < 4.0) {
+					mainDashboard.makeDashboard(userFound);
+					primaryStage.close();
 					errorLabel.setVisible(false);
-					
-				}else if(userFound == 2.0){ //2 is Elevated Access
-					//TODO: Elevated Access
-					System.out.println("Elevated Login");
-					errorLabel.setVisible(false);
-					
-				}else if(userFound == 3.0){ 
-					//TODO: Basic Access
-					System.out.println("Basic Login");
-					errorLabel.setVisible(false);
-				}else{//Show Error
+				}else{
 					errorLabel.setVisible(true);
-					//TODO: Show Error
 				}//End If Statement
 			}
 			
