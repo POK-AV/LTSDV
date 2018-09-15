@@ -2,6 +2,16 @@
 	-fx-background-image: url(/images/Main_BKG.png);
 }
 
+#SDbackground{
+	-fx-background-color: #00FF00;
+}
+
+#sdText{
+	-fx-text-fill: #ffffff;
+	-fx-font-family: Montserrat;
+	-fx-font-size: 30px;
+}
+
 #titles{
 	-fx-text-fill: 
 		linear-gradient(from 0% 0% to 0% 100%, #f49434 50%, #f48433 50%);

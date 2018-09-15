@@ -8,12 +8,14 @@ import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
+import javafx.stage.Screen;
 import javafx.stage.Stage;
 
 
-public class mainDashboard extends Application{
+public abstract class mainDashboard extends Application{
 	
 	public static void makeDashboard(Double accessLevel) {
+		startSD();
 		Stage primaryStage = new Stage();
 		
 		BorderPane borderPane = new BorderPane();
@@ -40,11 +42,35 @@ public class mainDashboard extends Application{
 		primaryStage.setTitle(applicationSettings.getApplicationName());
 		primaryStage.setResizable(false);
 		primaryStage.setScene(mainDashboard);
+		primaryStage.setFullScreen(false); //Has to be here to fix both Stages going FullScreen
 		primaryStage.show();
 	}
-
-	public void start(Stage primaryStage) throws Exception {
+	
+	public static void startSD() {
 		
+		System.out.println(Screen.getScreens());
+		
+		Stage sdStage = new Stage();
+		
+		BorderPane borderPane = new BorderPane();
+		borderPane.setId("SDbackground");
+		
+		borderPane.getStylesheets().add("/files/styles.css");
+		
+		Scene mainDashboard = new Scene(borderPane, 800, 600);
+		
+		Label sdText = new Label("This is a Stage Display test");
+		BorderPane.setAlignment(sdText, Pos.CENTER);
+		sdText.setPadding(new Insets(50));
+		sdText.setId("sdText");
+		borderPane.setBottom(sdText);
+		
+		
+		sdStage.setFullScreen(true);
+		sdStage.setTitle(applicationSettings.getApplicationName() + " - VIEWER");
+		sdStage.setResizable(false);
+		sdStage.setScene(mainDashboard);
+		sdStage.show();
 	}
 
 }
