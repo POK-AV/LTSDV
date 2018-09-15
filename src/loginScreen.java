@@ -77,6 +77,7 @@ public class loginScreen extends Application{
 		passwordFieldUnmasked.setVisible(false);
 		
 		//ERROR LABEL\\
+		//TODO: Make this a nice fade in?
 		Label errorLabel = new Label("Incorrect Username or Password");
 		errorLabel.relocate(298, 70);
 		errorLabel.setId("errorLabel");

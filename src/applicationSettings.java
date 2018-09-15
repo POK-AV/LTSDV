@@ -30,7 +30,6 @@ public class applicationSettings {
 		 * Update 9.14.18, Seems to work now? No changes made?
 		 */
 		
-		//TODO: Fix this breaking on Alan Moreno
 		while(currentRow < lastRow) {
 			if(sheet.getRow(currentRow).getCell(0).getStringCellValue().toLowerCase().equals(name.toLowerCase())) {
 				if(sheet.getRow(currentRow).getCell(1).getStringCellValue().toLowerCase().equals(password.toLowerCase())) {

@@ -4,10 +4,12 @@ import javafx.application.Application;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
 
@@ -40,6 +42,25 @@ public abstract class mainDashboard extends Application{
 		bottomHBox.getChildren().addAll(pokLogo);
 		BorderPane.setAlignment(bottomHBox, Pos.CENTER);
 		borderPane.setBottom(bottomHBox);
+		
+		//CENTER VBOX\\
+		VBox centerVBox = new VBox(40);
+		centerVBox.setPadding(new Insets(90, 190, 0, 190));
+		
+		//BIBLES\\
+		Button biblesButton = new Button("BIBLES");
+		biblesButton.setId("settingsButtons");
+		
+		//LOWER THIRDS\\
+		Button lowerThirds = new Button("LOWER THIRDS");
+		lowerThirds.setId("settingsButtons");
+		
+		//SETTINGS\\
+		Button settings = new Button("SETTINGS");
+		settings.setId("settingsButtons");
+		
+		borderPane.setCenter(centerVBox);
+		centerVBox.getChildren().addAll(biblesButton, lowerThirds, settings);
 		
 		primaryStage.setTitle(applicationSettings.getApplicationName());
 		primaryStage.setResizable(false);
