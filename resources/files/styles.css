@@ -9,7 +9,8 @@
 #sdText{
 	-fx-text-fill: #ffffff;
 	-fx-font-family: Montserrat;
-	-fx-font-size: 30px;
+	-fx-font-size: 25px;
+	-fx-text-alignment: center;
 }
 
 #titles{
