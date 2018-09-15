@@ -8,4 +8,4 @@ It should work in Windows/MacOS/Linux and other *nix systems
 ## Known Issues
 * Propresenter 5 for Windows does not support UTF-8 correctly which makes international characters to be shown incorrectly, e.g. Swedish characters ÅÄÖ are shown as ???. This is fixed in propresenter 6.
 
-* Logging in as user "Alan Moreno" seems to throw an error
+* Sometimes when the dashboard opens it opens in fullscreen, only current fix is to close the Application and reopen it
