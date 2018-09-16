@@ -83,7 +83,7 @@ public abstract class mainDashboard extends Application{
 		primaryStage.setTitle(applicationSettings.getApplicationName());
 		primaryStage.setResizable(false);
 		primaryStage.setScene(mainDashboard);
-		
+		primaryStage.show();
 		
 		primaryStage.setOnCloseRequest(event -> {
 			if(applicationSettings.isWindowOpen()) {

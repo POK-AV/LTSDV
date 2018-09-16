@@ -10,7 +10,6 @@ import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.layout.BorderPane;
-import javafx.stage.Screen;
 import javafx.stage.Stage;
 
 public class applicationSettings {
@@ -20,7 +19,7 @@ public class applicationSettings {
 	
 	static Boolean fileOpen = false;
 	
-	static Boolean anotherWindowOpen;
+	static Boolean anotherWindowOpen = false;
 	
 	public static String getApplicationName() {
 		String applicationName = name + " " + versionNumber;
@@ -56,8 +55,6 @@ public class applicationSettings {
 	
 public static Stage startSD(Stage primaryStage) throws InterruptedException {
 		
-		System.out.println(Screen.getScreens());
-		
 		Stage sdStage = new Stage();
 		
 		BorderPane borderPane = new BorderPane();
@@ -77,6 +74,9 @@ public static Stage startSD(Stage primaryStage) throws InterruptedException {
 		
 		sdStage.setTitle(applicationSettings.getApplicationName() + " - VIEWER");
 		sdStage.setScene(mainDashboard);
+		
+		//TODO: Clean up .setX and make it right
+		sdStage.setX(-1930.0); //Ghetto, but works for now, tested on LG 4K Curved OLED 70'
 		sdStage.setFullScreen(true);
 		sdStage.show();
 		
@@ -91,7 +91,6 @@ public static Stage startSD(Stage primaryStage) throws InterruptedException {
 		//TODO: Refactor this, make it nice and non-hacky
 		primaryStage.setMaxHeight(600);
 		primaryStage.setMaxWidth(800);
-		primaryStage.show();
 		
 		return sdStage;
 	}
