@@ -13,6 +13,12 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
+/*
+ * A bug seems to occur when there is no external monitor plugged in, causing all sorts
+ * of UI issues, to where the UI gets maximized without command and some Stage's will
+ * not close. Need to fix.
+ */
+
 public abstract class adminInterface extends Application {
 
 public static void makeAdminInterface(){
