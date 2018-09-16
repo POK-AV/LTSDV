@@ -10,13 +10,12 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
-import javafx.stage.Screen;
 import javafx.stage.Stage;
 
 
 public abstract class mainDashboard extends Application{
 	
-	public static void makeDashboard(Double accessLevel) {
+	public static void makeDashboard(Double accessLevel) throws InterruptedException{
 		
 		Stage primaryStage = new Stage();
 		
@@ -45,7 +44,6 @@ public abstract class mainDashboard extends Application{
 		
 		//CENTER VBOX\\
 		VBox centerVBox = new VBox(40);
-		centerVBox.setPadding(new Insets(90, 190, 0, 190));
 		
 		//BIBLES\\
 		Button biblesButton = new Button("BIBLES");
@@ -59,19 +57,40 @@ public abstract class mainDashboard extends Application{
 		Button settings = new Button("SETTINGS");
 		settings.setId("settingsButtons");
 		
+		//ADMIN THINGS\\
+		Button adminArea = new Button("ADMIN AREA");
+		adminArea.setId("settingsButtons");
+		adminArea.setOnAction(e ->{
+			try {
+				adminInterface.makeAdminInterface();
+				applicationSettings.setWindowOpen(true);
+				//primaryStage.close();
+			} catch (Exception e1) {
+				e1.printStackTrace();
+			}
+		});
+				
+		if(accessLevel == 1.0) {
+			centerVBox.getChildren().addAll(adminArea);
+			centerVBox.setPadding(new Insets(50, 190, 0, 190));
+		}else {
+			centerVBox.setPadding(new Insets(90, 190, 0, 190));
+		}
+		
 		borderPane.setCenter(centerVBox);
 		centerVBox.getChildren().addAll(biblesButton, lowerThirds, settings);
 		
 		primaryStage.setTitle(applicationSettings.getApplicationName());
 		primaryStage.setResizable(false);
 		primaryStage.setScene(mainDashboard);
-		primaryStage.setFullScreen(false); //Has to be here to fix both Stages going FullScreen
-		primaryStage.show();
 		
-		//applicationSettings.updateSDText("This is a text change test.");
 		
 		primaryStage.setOnCloseRequest(event -> {
-		    stageDisplay.close();
+			if(applicationSettings.isWindowOpen()) {
+				//Do Nothing?
+			}else {
+				stageDisplay.close();
+			}
 		});
 	}
 

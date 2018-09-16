@@ -20,6 +20,8 @@ public class applicationSettings {
 	
 	static Boolean fileOpen = false;
 	
+	static Boolean anotherWindowOpen;
+	
 	public static String getApplicationName() {
 		String applicationName = name + " " + versionNumber;
 		return applicationName;
@@ -52,12 +54,11 @@ public class applicationSettings {
 	
 	static Label sdText = null;
 	
-public static Stage startSD(Stage primaryStage) {
+public static Stage startSD(Stage primaryStage) throws InterruptedException {
 		
 		System.out.println(Screen.getScreens());
 		
 		Stage sdStage = new Stage();
-		sdStage.setFullScreen(true);
 		
 		BorderPane borderPane = new BorderPane();
 		borderPane.setId("SDbackground");
@@ -75,8 +76,8 @@ public static Stage startSD(Stage primaryStage) {
 		
 		
 		sdStage.setTitle(applicationSettings.getApplicationName() + " - VIEWER");
-		sdStage.setResizable(false);
 		sdStage.setScene(mainDashboard);
+		sdStage.setFullScreen(true);
 		sdStage.show();
 		
 		/*
@@ -88,17 +89,33 @@ public static Stage startSD(Stage primaryStage) {
 		 */
 		
 		//TODO: Refactor this, make it nice and non-hacky
-		primaryStage.setFullScreen(false);
 		primaryStage.setMaxHeight(600);
 		primaryStage.setMaxWidth(800);
-		primaryStage.setFullScreen(false);
-		
+		primaryStage.show();
 		
 		return sdStage;
 	}
 
 	public static void updateSDText(String newText) {
 		sdText.setText(newText);
+	}
+	
+	public static String getProperty(String property) {
+		//String host = "localhost";
+		
+		return "Hello";
+	}
+	
+	public static Boolean isWindowOpen() {
+		if(anotherWindowOpen) {
+			return true;
+		}else {
+			return false;
+		}
+	}
+	
+	public static void setWindowOpen(Boolean value) {
+		anotherWindowOpen = value;
 	}
 
 }

@@ -107,7 +107,12 @@ public class loginScreen extends Application{
 				 */
 				
 				if(userFound < 4.0) {
-					mainDashboard.makeDashboard(userFound);
+					try {
+						mainDashboard.makeDashboard(userFound);
+					} catch (InterruptedException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
 					primaryStage.close();
 					errorLabel.setVisible(false);
 				}else{
