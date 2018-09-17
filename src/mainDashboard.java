@@ -34,7 +34,7 @@ public abstract class mainDashboard extends Application{
 		borderPane.setTop(title);
 		
 		//POK LOGO\\
-		ImageView pokLogo = new ImageView("/images/POK LOGO.png");
+		ImageView pokLogo = new ImageView("/images/POK Logo.png");
 		HBox bottomHBox = new HBox();
 		//Code below is a little hacky but it gets the job done.
 		bottomHBox.setPadding(new Insets(0, 0, 22, mainDashboard.getWidth() / 2 - pokLogo.boundsInParentProperty().get().getWidth() / 2));
@@ -53,9 +53,9 @@ public abstract class mainDashboard extends Application{
 		Button lowerThirds = new Button("LOWER THIRDS");
 		lowerThirds.setId("settingsButtons");
 		
-		//SETTINGS\\
-		Button settings = new Button("SETTINGS");
-		settings.setId("settingsButtons");
+		//LYRICS\\
+		Button lyricsButton = new Button("LYRICS");
+		lyricsButton.setId("settingsButtons");
 		
 		//ADMIN THINGS\\
 		Button adminArea = new Button("ADMIN AREA");
@@ -78,7 +78,7 @@ public abstract class mainDashboard extends Application{
 		}
 		
 		borderPane.setCenter(centerVBox);
-		centerVBox.getChildren().addAll(biblesButton, lowerThirds, settings);
+		centerVBox.getChildren().addAll(biblesButton, lowerThirds, lyricsButton);
 		
 		primaryStage.setTitle(applicationSettings.getApplicationName());
 		primaryStage.setResizable(false);

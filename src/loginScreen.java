@@ -12,6 +12,7 @@ import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
@@ -42,7 +43,8 @@ public class loginScreen extends Application{
 		borderPane.setTop(title);
 		
 		//POK LOGO\\
-		ImageView pokLogo = new ImageView("/images/POK LOGO.png");
+		Image pokLogoTemp = new Image("/images/POK Logo.png");
+		ImageView pokLogo = new ImageView(pokLogoTemp);
 		HBox bottomHBox = new HBox();
 		//Code below is a little hacky but it gets the job done.
 		bottomHBox.setPadding(new Insets(0, 0, 22, loginScreen.getWidth() / 2 - pokLogo.boundsInParentProperty().get().getWidth() / 2));

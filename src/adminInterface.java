@@ -39,7 +39,7 @@ public static void makeAdminInterface(){
 		borderPane.setTop(title);
 		
 		//POK LOGO\\
-		ImageView pokLogo = new ImageView("/images/POK LOGO.png");
+		ImageView pokLogo = new ImageView("/images/POK Logo.png");
 		HBox bottomHBox = new HBox();
 		//Code below is a little hacky but it gets the job done.
 		bottomHBox.setPadding(new Insets(0, 0, 22, adminInterface.getWidth() / 2 - pokLogo.boundsInParentProperty().get().getWidth() / 2));
@@ -69,7 +69,35 @@ public static void makeAdminInterface(){
 			applicationSettings.updateSDText(overrideTextField.getText());
 		});
 		
-		centerPaneLayout.getChildren().addAll(overrideText, overrideTextField, overrideTextFieldSubmit);
+		//IP ADDRESS\\
+		Label ipAddressLabel = new Label("Ip Address");
+		ipAddressLabel.relocate(30, 70);
+		ipAddressLabel.setId("adminLabels");
+		
+		TextField ipAddressTextField = new TextField();
+		ipAddressTextField.setMaxWidth(120);
+		ipAddressTextField.relocate(130, 65);
+		ipAddressTextField.setId("textFields");
+		
+		Button ipAddressButton = new Button("SUBMIT");
+		ipAddressButton.relocate(260, 65);
+		ipAddressButton.setId("adminButtons");
+		
+		//PORT\\
+		Label portLabel = new Label("Port");
+		portLabel.relocate(370, 70);
+		portLabel.setId("adminLabels");
+				
+		TextField portTextField = new TextField();
+		portTextField.setMaxWidth(120);
+		portTextField.relocate(410, 65);
+		portTextField.setId("textFields");
+		
+		Button portButton = new Button("SUBMIT");
+		portButton.relocate(540, 65);
+		portButton.setId("adminButtons");
+				
+		centerPaneLayout.getChildren().addAll(overrideText, overrideTextField, overrideTextFieldSubmit, ipAddressLabel, ipAddressTextField, ipAddressButton, portLabel, portTextField, portButton);
 		
 		adminStage.setTitle(applicationSettings.getApplicationName() + " - ADMIN");
 		adminStage.setResizable(false);
