@@ -99,6 +99,8 @@ public static Stage startSD(Stage primaryStage) throws InterruptedException {
 		 * it's what I had to do to get the Stage Display working correctly
 		 * Need to add a check to find the second display and see what screen
 		 * this needs to go on.
+		 * 
+		 *
 		 */
 
 		Rectangle2D primaryScreenBounds = Screen.getPrimary().getVisualBounds();
