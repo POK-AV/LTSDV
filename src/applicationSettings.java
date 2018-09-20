@@ -77,7 +77,7 @@ public static Stage startSD(Stage primaryStage) throws InterruptedException {
 		
 		//TODO: Clean up .setX and make it right
 		sdStage.setX(-1930.0); //Ghetto, but works for now, tested on LG 4K Curved OLED 70'
-		sdStage.setFullScreen(true);
+		sdStage.setFullScreen(true); //Debug This
 		sdStage.show();
 		
 		/*
