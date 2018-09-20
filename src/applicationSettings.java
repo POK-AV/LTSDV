@@ -2,6 +2,10 @@
 
 import java.io.IOException;
 import java.io.InputStream;
+
+import javafx.geometry.Rectangle2D;
+import javafx.stage.Screen;
+import javafx.stage.StageStyle;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
@@ -77,8 +81,6 @@ public static Stage startSD(Stage primaryStage) throws InterruptedException {
 		
 		//TODO: Clean up .setX and make it right
 		sdStage.setX(-1930.0); //Ghetto, but works for now, tested on LG 4K Curved OLED 70'
-		sdStage.setFullScreen(true); //Debug This
-		sdStage.show();
 		
 		/*
 		 * Below is an attempt to fix a bug in which the mainDisplay continues to
@@ -91,7 +93,25 @@ public static Stage startSD(Stage primaryStage) throws InterruptedException {
 		//TODO: Refactor this, make it nice and non-hacky
 		primaryStage.setMaxHeight(600);
 		primaryStage.setMaxWidth(800);
-		
+
+		/*
+		 *Below is a little bit hacky, just like the rest of this project. However
+		 * it's what I had to do to get the Stage Display working correctly
+		 * Need to add a check to find the second display and see what screen
+		 * this needs to go on.
+		 */
+
+		Rectangle2D primaryScreenBounds = Screen.getPrimary().getVisualBounds();
+		sdStage.initStyle(StageStyle.UNDECORATED);
+
+		//Set the size of the SD to the screens dimensions
+		sdStage.setX(primaryScreenBounds.getMinX());
+		sdStage.setY(primaryScreenBounds.getMinY());
+		sdStage.setWidth(primaryScreenBounds.getWidth());
+		sdStage.setHeight(primaryScreenBounds.getHeight());
+
+		sdStage.show();
+
 		return sdStage;
 	}
 
