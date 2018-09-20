@@ -96,6 +96,7 @@ public static Stage startSD(Stage primaryStage) throws InterruptedException {
 		 * Need to add a check to find the second display and see what screen
 		 * this needs to go on.
 		 *
+		 * Need to check instead of hardcoding this later on
 		 *
 		 */
 
@@ -104,10 +105,9 @@ public static Stage startSD(Stage primaryStage) throws InterruptedException {
 		sdStage.initStyle(StageStyle.UNDECORATED);
 
 		//Set the size of the SD to the screens dimensions
-		sdStage.setX(primaryScreenBounds.getMinX());
-		sdStage.setY(primaryScreenBounds.getMinY());
-		sdStage.setWidth(primaryScreenBounds.getWidth());
-		sdStage.setHeight(primaryScreenBounds.getHeight());
+		//TODO: Check this instead of hard-coding it.
+		sdStage.setWidth(1920);
+		sdStage.setHeight(1080);
 
 		sdStage.show();
 
