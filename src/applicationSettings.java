@@ -89,21 +89,18 @@ public static Stage startSD(Stage primaryStage) throws InterruptedException {
 		 * obvious. Anyways this seems to work for now, i'll have to do some more
 		 * studying later and see if there's something i'm missing that would cause this.
 		 */
-		
-		//TODO: Refactor this, make it nice and non-hacky
-		primaryStage.setMaxHeight(600);
-		primaryStage.setMaxWidth(800);
 
 		/*
 		 *Below is a little bit hacky, just like the rest of this project. However
 		 * it's what I had to do to get the Stage Display working correctly
 		 * Need to add a check to find the second display and see what screen
 		 * this needs to go on.
-		 * 
+		 *
 		 *
 		 */
 
 		Rectangle2D primaryScreenBounds = Screen.getPrimary().getVisualBounds();
+
 		sdStage.initStyle(StageStyle.UNDECORATED);
 
 		//Set the size of the SD to the screens dimensions

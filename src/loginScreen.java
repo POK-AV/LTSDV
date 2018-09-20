@@ -17,6 +17,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
+import javafx.stage.Screen;
 import javafx.stage.Stage;
 
 public class loginScreen extends Application{
@@ -28,7 +29,9 @@ public class loginScreen extends Application{
 
 	Scene loginScreen;
 	public void start(Stage primaryStage) throws Exception {
-		
+
+		System.out.println(Screen.getScreens());
+
 		BorderPane borderPane = new BorderPane();
 		borderPane.setId("background");
 		
