@@ -30,7 +30,7 @@ public class loginScreen extends Application{
 	Scene loginScreen;
 	public void start(Stage primaryStage) throws Exception {
 
-		System.out.println(Screen.getScreens());
+		applicationSettings.loadProperties();
 
 		BorderPane borderPane = new BorderPane();
 		borderPane.setId("background");

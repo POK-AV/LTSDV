@@ -1,7 +1,10 @@
 //Made by Trey Carey | 9.11.18
 
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.Properties;
 
 import javafx.geometry.Rectangle2D;
 import javafx.stage.Screen;
@@ -24,7 +27,9 @@ public class applicationSettings {
 	static Boolean fileOpen = false;
 	
 	static Boolean anotherWindowOpen = false;
-	
+
+	static String operatingSystem = new String(System.getProperty("os.name"));
+
 	public static String getApplicationName() {
 		String applicationName = name + " " + versionNumber;
 		return applicationName;
@@ -81,14 +86,6 @@ public static Stage startSD(Stage primaryStage) throws InterruptedException {
 		
 		//TODO: Clean up .setX and make it right
 		sdStage.setX(-1930.0); //Ghetto, but works for now, tested on LG 4K Curved OLED 70'
-		
-		/*
-		 * Below is an attempt to fix a bug in which the mainDisplay continues to
-		 * fullscreen itself even after being implicitly told not too, who even
-		 * knows why computers do what they do anymore. Maybe i'm just missing something
-		 * obvious. Anyways this seems to work for now, i'll have to do some more
-		 * studying later and see if there's something i'm missing that would cause this.
-		 */
 
 		/*
 		 *Below is a little bit hacky, just like the rest of this project. However
@@ -134,6 +131,21 @@ public static Stage startSD(Stage primaryStage) throws InterruptedException {
 	
 	public static void setWindowOpen(Boolean value) {
 		anotherWindowOpen = value;
+	}
+
+	public static String getOS(){
+		return operatingSystem;
+	}
+
+	public static void loadProperties() throws IOException{
+		Properties properties = new Properties();
+		try {
+			InputStream propertiesFile = new FileInputStream("/config.properties");
+			properties.load(propertiesFile);
+		}catch(FileNotFoundException e){
+			e.printStackTrace();
+			System.out.println("config.properties file was not found");
+		}
 	}
 
 }
