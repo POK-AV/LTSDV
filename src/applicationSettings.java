@@ -1,5 +1,6 @@
 //Made by Trey Carey | 9.11.18
 
+import java.awt.*;
 import java.io.IOException;
 import java.io.InputStream;
 
@@ -79,9 +80,6 @@ public static Stage startSD(Stage primaryStage) throws InterruptedException {
 		sdStage.setTitle(applicationSettings.getApplicationName() + " - VIEWER");
 		sdStage.setScene(mainDashboard);
 		
-		//TODO: Clean up .setX and make it right
-		sdStage.setX(-1930.0); //Ghetto, but works for now, tested on LG 4K Curved OLED 70'
-		
 		/*
 		 * Below is an attempt to fix a bug in which the mainDisplay continues to
 		 * fullscreen itself even after being implicitly told not too, who even
@@ -89,10 +87,7 @@ public static Stage startSD(Stage primaryStage) throws InterruptedException {
 		 * obvious. Anyways this seems to work for now, i'll have to do some more
 		 * studying later and see if there's something i'm missing that would cause this.
 		 */
-		
-		//TODO: Refactor this, make it nice and non-hacky
-		primaryStage.setMaxHeight(600);
-		primaryStage.setMaxWidth(800);
+
 
 		/*
 		 *Below is a little bit hacky, just like the rest of this project. However
@@ -108,24 +103,38 @@ public static Stage startSD(Stage primaryStage) throws InterruptedException {
 		sdStage.initStyle(StageStyle.UNDECORATED);
 
 		//Set the size of the SD to the screens dimensions
-		sdStage.setX(primaryScreenBounds.getMinX());
-		sdStage.setY(primaryScreenBounds.getMinY());
 		sdStage.setWidth(primaryScreenBounds.getWidth());
 		sdStage.setHeight(primaryScreenBounds.getHeight());
+
+		moveSDToDisplay(0, sdStage);
 
 		sdStage.show();
 
 		return sdStage;
 	}
 
+	public static void moveSDToDisplay(int desiredDisplay, Stage stageDisplay){
+		GraphicsEnvironment graphicsEnviorment = GraphicsEnvironment.getLocalGraphicsEnvironment();
+		GraphicsDevice[] screenDevices = graphicsEnviorment.getScreenDevices();
+
+		StringBuilder stringBuilder = new StringBuilder();
+		for(int i = 0; i < screenDevices.length; i++){
+			DisplayMode displayMode = screenDevices[i].getDisplayMode();
+			stringBuilder.append(i + ", Width: " + displayMode.getWidth() + " Height: " + displayMode.getHeight() + "\n");
+			if(i == (desiredDisplay) && desiredDisplay == (0)){
+				//TODO: Clean up .setX and make it right
+				stageDisplay.setX(-1930.0); //Ghetto, but works for now, tested on LG 4K Curved OLED 70'
+				stageDisplay.setWidth(displayMode.getWidth());
+				stageDisplay.setHeight(displayMode.getHeight());
+				stageDisplay.setFullScreen(true);
+			}
+		}
+		//Only use this to see screen sizes and how many there are
+		//System.out.println(stringBuilder.toString());
+	}
+
 	public static void updateSDText(String newText) {
 		sdText.setText(newText);
-	}
-	
-	public static String getProperty(String property) {
-		//String host = "localhost";
-		
-		return "Hello";
 	}
 	
 	public static Boolean isWindowOpen() {
