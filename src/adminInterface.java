@@ -15,7 +15,7 @@ import javafx.stage.Stage;
 
 /*
  * A bug seems to occur when there is no external monitor plugged in, causing all sorts
- * of UI issues, to where the UI gets maximized without command and some Stage's will
+ * of UI issues, to where the UI gets maximized without command and some Stages will
  * not close. Need to fix.
  */
 
@@ -66,7 +66,7 @@ public static void makeAdminInterface(){
 		overrideTextFieldSubmit.relocate(700, 15); // W, H
 		overrideTextFieldSubmit.setId("adminButtons");
 		overrideTextFieldSubmit.setOnAction(e ->{
-			applicationSettings.updateSDText(overrideTextField.getText());
+			stageDisplay.updateText(overrideTextField.getText());
 		});
 		
 		//IP ADDRESS\\

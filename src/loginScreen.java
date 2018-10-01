@@ -2,8 +2,6 @@
 
 import java.io.IOException;
 import javafx.application.Application;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
@@ -17,20 +15,19 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
-import javafx.stage.Screen;
 import javafx.stage.Stage;
 
 public class loginScreen extends Application{
-	
-	static int textFieldSize = 250;
+
 	static PasswordField passwordField;
 	static TextField passwordFieldUnmasked;
 	static CheckBox showPassword;
 
-	Scene loginScreen;
-	public void start(Stage primaryStage) throws Exception {
+	public void start(Stage primaryStage) {
+		Scene loginScreen;
+		int textFieldSize = 250;
 
-		applicationSettings.loadProperties();
+		//applicationSettings.loadProperties();
 
 		BorderPane borderPane = new BorderPane();
 		borderPane.setId("background");
@@ -94,40 +91,35 @@ public class loginScreen extends Application{
 		Button loginButton = new Button("LOGIN");
 		loginButton.relocate(488, 170);
 		loginButton.setId("buttons");
-		
-		EventHandler<ActionEvent> loginClicked = new EventHandler<ActionEvent>() {
-			public void handle(ActionEvent event) {
-				double userFound =  0.0;
+		loginButton.setOnAction(e -> {
+			double userFound =  0.0;
+			try {
+				userFound = applicationSettings.lookupUser(usernameField.getText(), passwordField.getText());
+			} catch (IOException error) {
+				error.printStackTrace();
+			}//END of Try/Catch
+
+			/*
+			 * 1 = Admin
+			 * 2 = Elevated
+			 * 3 = Basic
+			 * 4 = No User
+			 */
+
+			if(userFound < 4.0) {
 				try {
-					userFound = applicationSettings.lookupUser(usernameField.getText(), passwordField.getText());
-				} catch (IOException e) {
-					e.printStackTrace();
-				}//END of Try/Catch
-				
-				/*
-				 * 1 = Admin
-				 * 2 = Elevated
-				 * 3 = Basic
-				 * 4 = No User
-				 */
-				
-				if(userFound < 4.0) {
-					try {
-						mainDashboard.makeDashboard(userFound);
-					} catch (InterruptedException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-					}
-					primaryStage.close();
-					errorLabel.setVisible(false);
-				}else{
-					errorLabel.setVisible(true);
-				}//End If Statement
-			}
-			
-		};
-		
-		loginButton.setOnAction(loginClicked);
+					mainDashboard.makeDashboard(userFound);
+				} catch (InterruptedException error2) {
+					// TODO Auto-generated catch block
+					error2.printStackTrace();
+				}
+				primaryStage.close();
+				errorLabel.setVisible(false);
+			}else{
+				errorLabel.setVisible(true);
+			}//End If Statement
+		});
+
 		
 		//CHECKBOX\\
 		showPassword = new CheckBox("SHOW PASSWORD");
@@ -147,7 +139,7 @@ public class loginScreen extends Application{
 		primaryStage.show();
 	}
 	
-	public static void showPassword() {
+	private static void showPassword() {
 		if(showPassword.isSelected()) {
 			passwordFieldUnmasked.setText(passwordField.getText());
 			passwordFieldUnmasked.setVisible(true);

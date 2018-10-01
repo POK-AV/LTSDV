@@ -19,7 +19,7 @@ public abstract class mainDashboard extends Application{
 		
 		Stage primaryStage = new Stage();
 		
-		Stage stageDisplay = applicationSettings.startSD(primaryStage);
+		Stage stageDisplayViewer = stageDisplay.startSD();
 		
 		BorderPane borderPane = new BorderPane();
 		borderPane.setId("background");
@@ -90,7 +90,7 @@ public abstract class mainDashboard extends Application{
 			if(applicationSettings.isWindowOpen()) {
 				//Do Nothing?
 			}else {
-				stageDisplay.close();
+				stageDisplayViewer.close();
 			}
 		});
 	}
