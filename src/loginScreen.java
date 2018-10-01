@@ -53,7 +53,7 @@ public class loginScreen extends Application{
 		borderPane.setBottom(bottomHBox);
 		
 		//CENTER PANE LAYOUT\\
-		//I am using a pane for the absolute positioning
+		//I am using a pane for the absolute positioning, probably should change later.
 		Pane centerPaneLayout = new Pane();
 		
 		//USERNAME FIELD\\
